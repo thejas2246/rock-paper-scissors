@@ -9,5 +9,10 @@ if(randomNumber === 1) return "Rock";
 else if(randomNumber === 2) return "Paper";
 else return "Scissors";
 }
+//the function uses prompt to get the users choice
 
-console.log(getComputerChoice());
+function getHumanChoice(){
+    const humanChoice = prompt("Select Rock Paper or Scissors");
+    return humanChoice;
+}
+
