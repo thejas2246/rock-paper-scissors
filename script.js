@@ -5,21 +5,17 @@ else if(randomNumber === 2) return "Paper";
 else return "Scissors";
 }
 
-function getHumanChoice(e){
-    const humanChoice = e.target;
-    console.log(humanChoice)
-    return humanChoice;
-}
-
 let humanScore = 0;
 let computerScore = 0;
-
+const winningChoice = document.querySelector("h2");
 function playGame(event){
         let humanSelection = event.target.textContent;
-        console.log(humanSelection);
+        setPlayerDisplay(humanSelection,".player-img");
         let computerSelection = getComputerChoice();
-        console.log(computerSelection)
-        console.warn(playRound(humanSelection,computerSelection));
+        setPlayerDisplay(computerSelection,".computer-img")
+
+       
+        winningChoice.textContent = playRound(humanSelection,computerSelection);
 
     
     function playRound(humanChoice,computerChoice){
@@ -50,27 +46,62 @@ function playGame(event){
             return `You lost! ${computerChoice} beats ${humanChoice}`;
         }
         else if(humanChoice === computerChoice){
-            return "tie";
+            return "Tie";
         }
         else{
             return "invalid option";
         }
     }
-    if(humanScore>computerScore){
-        console.log('You Won! Congratulations');
-    }
-    else if(humanScore === computerScore){
-        console.log('Draw');
-    }
-    else {
-        console.log('Computer is the winner');
-    }
+    updateScore();
+    checkWinner();
+   
 }
 
-const button = document.querySelectorAll("button");
+const button = document.querySelectorAll(".button");
 
-button.forEach((item)=>{
-    item.addEventListener('click',playGame)
-    
-})
+function startEvent(){
+    button.forEach((item)=>{
+        item.addEventListener('click',playGame)
+        
+    })
+}
+const resetButton = document.querySelector(".reset");
+resetButton.addEventListener('click',resetScore)
 
+function setPlayerDisplay(choice,className){
+const image = document.querySelector(className);
+if(choice=="Rock") image.src = "./images/rock.png";
+else if(choice==="Paper") image.src = "./images/paper.png"
+else image.src="./images/scissors.png"
+
+
+}
+
+function updateScore(){
+    const playerScoreUpdate = document.querySelector(".player-score");
+    const computerScoreUpdate = document.querySelector(".computer-score");
+
+    playerScoreUpdate.textContent = `player: ${humanScore}`
+    computerScoreUpdate.textContent = `computer: ${computerScore}`
+}
+
+function checkWinner(){
+    if(humanScore===5||computerScore==5){
+        button.forEach((item)=>{
+            item.removeEventListener("click",playGame);
+        })
+    if(humanScore>computerScore){
+        winningChoice.textContent = "Congratulations,You Won the Game"
+    }
+    else winningChoice.textContent = "Sorry You lost,Try again"
+    }
+}
+function resetScore(){
+    humanScore = 0;
+    computerScore = 0;
+    updateScore();
+    winningChoice.textContent ="Choose your option"
+    startEvent();
+}
+
+startEvent();

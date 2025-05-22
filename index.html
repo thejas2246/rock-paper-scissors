@@ -9,26 +9,27 @@
   <body>
     <div class="container">
       <h1>Rock Paper Scissors</h1>
-      <h2>Make a choice</h2>
+      <h2>Choose your option</h2>
       <div class="display-choice">
         <div class="player choice">
           <div class="player-display">
-            <img src="./images/scissors.png" />
+            <img class="player-img" src="./images/scissors.png" />
           </div>
-          <div>Player:0</div>
+          <div class="player-score">Player:0</div>
         </div>
-        <div class="Computer choice">
+        <div class="computer choice">
           <div class="computer-display">
-            <img src="./images/rock.png" />
+            <img class="computer-img" src="./images/rock.png" />
           </div>
-          <div>Computer:0</div>
+          <div class="computer-score">Computer:0</div>
         </div>
       </div>
       <div class="selection-button">
-        <button>Rock</button>
-        <button>Paper</button>
-        <button>Scissors</button>
+        <button class="button">Rock</button>
+        <button class="button">Paper</button>
+        <button class="button">Scissors</button>
       </div>
+      <button class="reset">Reset</button>
     </div>
 
     <script src="script.js"></script>

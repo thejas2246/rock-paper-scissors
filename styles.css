@@ -12,7 +12,8 @@
 }
 .selection-button{
     display: flex;
-    justify-content:space-around;
+    justify-content:stretch;
+    gap: 20px;
     width: 100%;
 }
 .player-display,.computer-display{
@@ -31,8 +32,8 @@ img{
     margin: auto;
 }
 
-.selection-button button{
-    width: 90px;
+.selection-button button,.container>button{
+    flex: 1;
     font-size: 17px;
     padding: 10px 10px;
     font-weight: bold;
@@ -56,4 +57,7 @@ h1{
     gap: 50px;
     font-size: 20px;
     font-weight: bold;
+}
+.container>button{
+    width: 100%;
 }
