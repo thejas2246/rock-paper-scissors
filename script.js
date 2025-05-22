@@ -6,7 +6,8 @@ else return "Scissors";
 }
 
 function getHumanChoice(e){
-    const humanChoice = e.target.textContent;
+    const humanChoice = e.target;
+    console.log(humanChoice)
     return humanChoice;
 }
 
@@ -14,7 +15,6 @@ let humanScore = 0;
 let computerScore = 0;
 
 function playGame(event){
-
         let humanSelection = event.target.textContent;
         console.log(humanSelection);
         let computerSelection = getComputerChoice();
