@@ -5,21 +5,22 @@ else if(randomNumber === 2) return "Paper";
 else return "Scissors";
 }
 
-function getHumanChoice(){
-    const humanChoice = prompt("Select Rock Paper or Scissors");
+function getHumanChoice(e){
+    const humanChoice = e.target.textContent;
     return humanChoice;
 }
 
 let humanScore = 0;
 let computerScore = 0;
 
-function playGame(){
+function playGame(event){
 
-    for(let i = 0; i < 5 ; i++ ){
-        let humanSelection = getHumanChoice();
+        let humanSelection = event.target.textContent;
+        console.log(humanSelection);
         let computerSelection = getComputerChoice();
-        console.log(playRound(humanSelection,computerSelection));
-    }
+        console.log(computerSelection)
+        console.warn(playRound(humanSelection,computerSelection));
+
     
     function playRound(humanChoice,computerChoice){
         humanChoice = humanChoice.toLowerCase();
@@ -65,3 +66,11 @@ function playGame(){
         console.log('Computer is the winner');
     }
 }
+
+const button = document.querySelectorAll("button");
+
+button.forEach((item)=>{
+    item.addEventListener('click',playGame)
+    
+})
+
